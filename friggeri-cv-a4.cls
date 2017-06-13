@@ -167,13 +167,22 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
 
-%\usepackage{longtable}
-\setlength{\tabcolsep}{0pt}
+\usepackage{longtable}
+\setlength\LTleft{0pt}            % default: \parindent
+\setlength\LTright{0pt}           % default: \fill
 \newenvironment{entrylist}{%
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+  \begin{longtable*}{@{\extracolsep{\fill}}ll}
 }{%
-  \end{tabular*}
+  \end{longtable*}
 }
+
+% \setlength{\tabcolsep}{0pt}
+% \newenvironment{entrylist}{%
+%   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+% }{%
+%   \end{tabular*}
+% }
+
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
   \parbox[t]{2cm}{#1}&\parbox[t]{11.3cm}{%
@@ -349,12 +358,12 @@ BoldItalicFont=texgyreheros-bolditalic.otf
 \RequirePackage[left=6.1cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
-    colorlinks=false,       
-    linkcolor=red,          
-    citecolor=red,        
-    filecolor=red,      
+    colorlinks=false,
+    linkcolor=red,
+    citecolor=red,
+    filecolor=red,
     urlcolor = red}
-    
+
 % A fix for \href{}{} colors not working with fontspec
 \makeatletter
 \def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=#1}}
