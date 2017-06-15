@@ -1,5 +1,5 @@
 cv.synctex.gz
-.pdf                  # don't keep the PDF
+cv.pdf
 .DS_Store/*
 .texpadtmp/*
 FontAwesome.otf
