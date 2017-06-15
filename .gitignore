@@ -1,2 +1,6 @@
 cv.synctex.gz
 .pdf                  # don't keep the PDF
+.DS_Store/*
+.texpadtmp/*
+FontAwesome.otf
+missfont.log

@@ -1,19 +1,18 @@
-\ProvidesClass{friggeri-cv-a4}[2015/10/22 CV class]
+\ProvidesClass{friggeri-cv}[2012/04/30 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
-\DeclareOption{nocolors}{\def\@cv@nocolors{}}
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{article}%
 }
 \ProcessOptions\relax
-\LoadClass{article}
+\LoadClass[a4paper]{article}
 
-% set A4 paper format
-\setlength\paperheight {297mm}
-\setlength\paperwidth  {210mm}
+%% set A4 paper format
+%\setlength\paperheight {297mm}
+%\setlength\paperwidth  {210mm}
+%\ProcessOptions
 
-\ProcessOptions
 
 %%%%%%%%%%
 % Colors %
@@ -49,18 +48,6 @@
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
-\ifdefined\@cv@nocolors
-  \colorlet{green}{gray}
-  \colorlet{rdfgreen}{gray}
-  \colorlet{orange}{gray}
-  \colorlet{rdforange}{gray}
-  \colorlet{purple}{gray}
-  \colorlet{rdfpurple}{gray}
-  \colorlet{brown}{gray}
-  \colorlet{red}{gray}
-  \colorlet{blue}{gray}
-\fi
-
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
@@ -77,32 +64,6 @@
 \setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue Light}
 
 %\setmathfont{XITS Math}
-
-%\RequirePackage[quiet]{fontspec}
-%\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
-%\RequirePackage{fontawesome}
-%
-%\newcommand{\colorLinkedinSign}{\textcolor{rgb:red,6;green,1‌​08;blue,170}{\faLinkedin}}
-%
-%\newfontfamily\bodyfont
-%[BoldFont=texgyreheros-bold.otf,
-%ItalicFont=texgyreheros-italic.otf,
-%BoldItalicFont=texgyreheros-bolditalic.otf]
-%{texgyreheros-regular.otf}
-%\newfontfamily\thinfont[]{Lato-Light.ttf}
-%\newfontfamily\headingfont[]{texgyreheros-bold.otf}
-%
-%\defaultfontfeatures{Mapping=tex-text}
-%\setmainfont
-%[Mapping=tex-text, Color=textcolor,
-%BoldFont=texgyreheros-bold.otf,
-%ItalicFont=texgyreheros-italic.otf,
-%BoldItalicFont=texgyreheros-bolditalic.otf
-%]
-%{texgyreheros-regular.otf}
-%
-%\setmathfont{texgyreheros-regular.otf}
-%%%
 
 %%%%%%%%%%
 % Header %
@@ -182,26 +143,20 @@
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
+\RequirePackage{longtable}
 
-\usepackage{longtable}
 \setlength\LTleft{0pt}            % default: \parindent
 \setlength\LTright{0pt}           % default: \fill
+
+\setlength{\tabcolsep}{0pt}
 \newenvironment{entrylist}{%
   \begin{longtable}{@{\extracolsep{\fill}}ll}
 }{%
   \end{longtable}
 }
-
-% \setlength{\tabcolsep}{0pt}
-% \newenvironment{entrylist}{%
-%   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
-% }{%
-%   \end{tabular*}
-% }
-
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  \parbox[t]{2cm}{#1}&\parbox[t]{11.3cm}{%
+  #1&\parbox[t]{11.8cm}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
@@ -235,7 +190,7 @@
 % Bibliography %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[backend=biber, style=verbose, maxnames=99, sorting=ydnt]{biblatex}
+\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
 
 \DeclareFieldFormat[article]{title}{#1\par}
 \DeclareFieldFormat[book]{title}{#1\par}
@@ -348,9 +303,7 @@
     {}%
 }
 
-\defbibheading{bibheading}[\bibname]{%
-   \subsubsection*{#1}
-   \markboth{#1}{#1}
+\defbibheading{bibheading}[\bibname]{%   \subsubsection*{#1}   \markboth{#1}{#1}
 }
 
 \newcommand{\printbibsection}[2]{
@@ -371,15 +324,15 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6.1cm,top=2cm,right=2.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
-    colorlinks=false,
-    linkcolor=red,
-    citecolor=red,
-    filecolor=red,
+    colorlinks=false,       
+    linkcolor=red,          
+    citecolor=red,        
+    filecolor=red,      
     urlcolor = red}
-
+    
 % A fix for \href{}{} colors not working with fontspec
 \makeatletter
 \def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=#1}}
